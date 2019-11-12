@@ -2,12 +2,13 @@ let rateOfInterest = 5;
 let loanAmmountRef = document.getElementById("loanAmount");
 let loanTermRef = document.getElementById("loanTerm");
 document.getElementById("calculateButton").addEventListener("click", OnCalculatePressed);
-let outputDiv = document.getElementById("output");
+let outputArea = document.getElementById("output-area");
+
 
 function calculateMonthlyPayments(loanAmount, loanTerm){
     if(loanAmount<=0 || loanTerm<=0){
         alert(`Amount and/or Term cannot be <= 0`)
-        return
+        return null;
     }
 
     let loanTermInMonths = loanTerm*12;
@@ -22,11 +23,17 @@ function calculateMonthlyPayments(loanAmount, loanTerm){
 
 function OnCalculatePressed(){
     ans = calculateMonthlyPayments(loanAmmountRef.value, loanTerm.value);
-    outputDiv.innerHTML = `<li><h2>Your Monthly Payments</h2></li>`;
-    outputDiv.innerHTML += `<li><h3>Base Calculations</h3></li>`;
-    outputDiv.innerHTML += `<li><label>Loan Amount: ${loanAmmountRef.value}</label></li>`;
-    outputDiv.innerHTML += `<li><label>Interest Rate: ${rateOfInterest}%</label></li>`;
-    outputDiv.innerHTML += `<li><label>Number of Years: ${loanTerm.value}</label></li>`;
-    outputDiv.innerHTML += `<li><label>Monthly Payments: ${ans}</label></li>`;
-    // Interest Rate: ${rateOfInterest}% Number of Years: ${loanTerm.value} Monthly Payments: ${ans}`;
+    if(ans == null)
+        return
+    let temp = outputArea.innerHTML;
+    outputArea.innerHTML = `<li><h2>Your Monthly Payments</h2></li>`;
+    outputArea.innerHTML += `<li><h3>Base Calculations</h3></li>`;
+    outputArea.innerHTML += `<ul class="output-grid" id="output-grid">
+    </ul>`;
+    let outputGrid = document.getElementById("output-grid");
+    outputGrid.innerHTML = `<li><label><strong>Loan Amount:</strong> ${loanAmmountRef.value}</label></li>`;
+    outputGrid.innerHTML += `<li><label><strong>Interest Rate:</strong> ${rateOfInterest}%</label></li>`;
+    outputGrid.innerHTML += `<li><label><strong>Number of Years:</strong> ${loanTerm.value}</label></li>`;
+    outputGrid.innerHTML += `<li><label><strong>Monthly Payments:</strong> ${ans}</label></li>`;
+   
 }

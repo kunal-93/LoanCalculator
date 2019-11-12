@@ -10,12 +10,14 @@
 <body>
     <ul class="input-area">
         <li><h1 class="head">Loan Calculator</h1></li>
-        <li><label class="common-block">Loan Amount<input type="number" id="loanAmount"></label></li>
-        <li><label>Number of Years<input type="number" id="loanTerm"></label></li>
-        <li><input type="Button" value="Calculate" id="calculateButton"></li>
+        <li><label><strong>Amount</strong></label></li>
+        <li><input type="number" id="loanAmount"></li>
+        <li><label><strong>Number of Years</strong></label></li>
+        <li><input type="number" id="loanTerm"></li>
+        <li><input type="Button" value="Calculate" id="calculateButton" class="button"></li>
     </ul>
-    <div id="output"></div>
-    
+    <ul id="output-area">
+    </ul>
     <script src="js/index.js"></script>
 </body>
 </html>
