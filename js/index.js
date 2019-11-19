@@ -17,7 +17,7 @@ function calculateMonthlyPayments(loanAmount, loanTerm){
     let numerator = loanAmount*monthlyInterstRate;
     let ans = numerator/denominator;
 
-    return ans;
+    return ans.toFixed(2);
 }
 
 
@@ -34,6 +34,6 @@ function OnCalculatePressed(){
     outputGrid.innerHTML = `<li><label><strong>Loan Amount:</strong> ${loanAmmountRef.value}</label></li>`;
     outputGrid.innerHTML += `<li><label><strong>Interest Rate:</strong> ${rateOfInterest}%</label></li>`;
     outputGrid.innerHTML += `<li><label><strong>Number of Years:</strong> ${loanTerm.value}</label></li>`;
-    outputGrid.innerHTML += `<li><label><strong>Monthly Payments:</strong> ${ans}</label></li>`;
+    outputGrid.innerHTML += `<li><label><strong>Monthly Payments:</strong> $${ans}</label></li>`;
    
 }
